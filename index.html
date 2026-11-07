@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Type Calculator for Female – 9 Body Shapes Explained</title>
+<meta name="description" content="Body type calculator for women: enter bust, waist, high hip and hips to find out which of the 9 female body shapes you are – with a clear explanation of why, in inches or cm.">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Body Type Calculator for Female – 9 Body Shapes Explained">
+<meta property="og:description" content="Find your female body shape from four measurements and see exactly which rule decided your result.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebApplication",
+      "name":"Body Type Calculator for Female",
+      "applicationCategory":"LifestyleApplication",
+      "operatingSystem":"Browser",
+      "inLanguage":"en",
+      "description":"Female body type calculator that sorts bust, waist, high hip and hip measurements into nine body shapes and explains the rule behind each result.",
+      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"How many female body types are there?","acceptedAnswer":{"@type":"Answer","text":"This calculator uses nine female body shapes: hourglass, top hourglass, bottom hourglass, spoon, pear, triangle, apple, rectangle and inverted triangle. Many simpler systems combine them into five main families."}},
+        {"@type":"Question","name":"What is the difference between pear and triangle body shape?","acceptedAnswer":{"@type":"Answer","text":"Both have hips wider than the bust. In a pear shape the hips are about 3.6 to 7 inches larger with a defined waist; in a triangle shape the difference is 7 inches or more and the waist is less defined."}},
+        {"@type":"Question","name":"Why is my high hip measurement needed?","acceptedAnswer":{"@type":"Answer","text":"The high hip shows whether your hips widen gradually or form a shelf just below the waist. A high hip of 1.193 times your waist or more points to a spoon shape rather than a bottom hourglass."}},
+        {"@type":"Question","name":"Can I be two body types at once?","acceptedAnswer":{"@type":"Answer","text":"Measurements often sit close to a border between two shapes. The calculator follows a fixed order and gives the first shape whose rule matches, but if you are near a boundary, the neighbouring shape’s styling tips may suit you too."}},
+        {"@type":"Question","name":"Does body type change after pregnancy or with age?","acceptedAnswer":{"@type":"Answer","text":"Yes, proportions can shift with pregnancy, menopause, age and changes in weight or fitness. Re-measuring once in a while keeps your result up to date."}},
+        {"@type":"Question","name":"Is my data saved?","acceptedAnswer":{"@type":"Answer","text":"No. The calculation runs entirely in your browser and your measurements are never sent or stored."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <a href="#" class="mark" aria-label="Female Body Type Calculator home"><span class="mark-f">F</span><span>body<em>type</em></span></a>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')"><span></span><span></span></button>
+    <nav class="links">
+      <a href="#" class="here">Calculator</a>
+      <a href="#shapes">Body Shapes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="cover">
+  <div class="wrap cover-grid">
+    <div>
+      <p class="issue">For women · 9 shapes · inches or cm</p>
+      <h1>Body Type Calculator <em>for Female</em></h1>
+      <p class="cover-lead">Four tape-measure numbers are all it takes. This <a href="https://bodytypecalcs.com/">body type calculator</a> sorts your proportions into one of nine female body shapes – and, unlike most tools, it shows you exactly which rule decided your result.</p>
+    </div>
+    <figure class="cover-fig" aria-hidden="true">
+      <svg viewBox="0 0 220 300" id="cover-svg"></svg>
+      <figcaption>Where to measure</figcaption>
+    </figure>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- ========== CALCULATOR ========== -->
+  <section class="calc" id="calculator" aria-label="Body type calculator for female">
+    <div class="calc-top">
+      <h2>Enter your measurements</h2>
+      <div class="unit" role="group" aria-label="Unit">
+        <button type="button" data-u="in" class="on">Inches</button>
+        <button type="button" data-u="cm">Centimetres</button>
+      </div>
+    </div>
+    <div class="meas">
+      <label class="m"><span class="m-n">01</span><span class="m-l">Bust</span><input type="number" id="i-b" value="35" min="0" step="0.1" inputmode="decimal"><span class="m-u">in</span><small>Fullest part, tape level</small></label>
+      <label class="m"><span class="m-n">02</span><span class="m-l">Waist</span><input type="number" id="i-w" value="32" min="0" step="0.1" inputmode="decimal"><span class="m-u">in</span><small>Narrowest point</small></label>
+      <label class="m"><span class="m-n">03</span><span class="m-l">High hip</span><input type="number" id="i-hh" value="36" min="0" step="0.1" inputmode="decimal"><span class="m-u">in</span><small>Top of hip bones</small></label>
+      <label class="m"><span class="m-n">04</span><span class="m-l">Hips</span><input type="number" id="i-h" value="40" min="0" step="0.1" inputmode="decimal"><span class="m-u">in</span><small>Widest part of seat</small></label>
+    </div>
+    <div class="calc-act">
+      <button class="go" id="go">Find my body type</button>
+      <p class="err" id="err" role="alert"></p>
+    </div>
+
+    <div class="res" id="res" aria-live="polite">
+      <div class="res-fig"><svg viewBox="0 0 200 320" id="res-svg"></svg></div>
+      <div class="res-main">
+        <p class="res-k">Your female body type</p>
+        <h3 class="res-name" id="r-name">Pear</h3>
+        <p class="res-fam" id="r-fam">Pear family</p>
+        <p class="res-desc" id="r-desc"></p>
+        <div class="why">
+          <h4>Why this result?</h4>
+          <ul id="r-why"></ul>
+        </div>
+        <a class="res-more" id="r-more" href="#shapes">See this shape in the guide ↓</a>
+      </div>
+      <div class="res-side">
+        <div class="nums">
+          <div><span>Hips − bust</span><b id="n-hb">5.0 in</b></div>
+          <div><span>Hips − waist</span><b id="n-hw">12.0 in</b></div>
+          <div><span>Bust − waist</span><b id="n-bw">7.0 in</b></div>
+          <div><span>High hip ÷ waist</span><b id="n-hhw">1.21</b></div>
+        </div>
+        <div class="style">
+          <h4>Dress it</h4>
+          <ul id="r-tips"></ul>
+        </div>
+        <button class="copy" id="copy">Copy my result</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SHAPES GALLERY ========== -->
+  <section class="sec" id="shapes">
+    <p class="kicker">The guide</p>
+    <h2>The 9 female body shapes</h2>
+    <p class="lead">Each silhouette below is drawn from typical measurements for that shape. Read the short description – then follow the links for a full styling guide on each body shape.</p>
+    <div class="gallery" id="gallery">
+      <article id="s-hourglass" data-p="36,26,33,37"><svg viewBox="0 0 200 320"></svg><div><h3>Hourglass</h3><p>Bust and hips within about an inch of each other and a waist at least 9–10 inches smaller. Curves are balanced top and bottom.</p><a href="https://bodytypecalcs.com/hourglass-body-shape/">hourglass body shape</a></div></article>
+      <article id="s-thourglass" data-p="38,27,32,36"><svg viewBox="0 0 200 320"></svg><div><h3>Top Hourglass</h3><p>A clearly defined waist with a bust 1–10 inches larger than the hips. A variation within the hourglass family.</p></div></article>
+      <article id="s-bhourglass" data-p="34,26,30,38"><svg viewBox="0 0 200 320"></svg><div><h3>Bottom Hourglass</h3><p>A clearly defined waist with hips 3.6–10 inches larger than the bust, widening gradually below the waist.</p></div></article>
+      <article id="s-spoon" data-p="34,27,35,39"><svg viewBox="0 0 200 320"></svg><div><h3>Spoon</h3><p>Hips at least 2 inches larger than the bust with a distinct “shelf” at the high hip, just below the waist.</p><a href="https://bodytypecalcs.com/spoon-body-shape/">spoon body shape</a></div></article>
+      <article id="s-pear" data-p="35,32,36,40"><svg viewBox="0 0 200 320"></svg><div><h3>Pear</h3><p>Hips 3.6–7 inches larger than the bust, narrower shoulders and a defined waist. One of the most common shapes.</p><a href="https://bodytypecalcs.com/pear-body-shape/">pear body shape</a></div></article>
+      <article id="s-triangle" data-p="33,34,36,41"><svg viewBox="0 0 200 320"></svg><div><h3>Triangle</h3><p>Hips 7 inches or more larger than the bust, with a moderately defined waist – much fuller below the waist than above.</p><a href="https://bodytypecalcs.com/triangle-body-shape/">triangle body shape</a></div></article>
+      <article id="s-apple" data-p="38,38,38,38"><svg viewBox="0 0 200 320"></svg><div><h3>Apple</h3><p>Bust and hips similar, with a waist close to both. Fullness sits around the middle, often with slimmer legs.</p><a href="https://bodytypecalcs.com/apple-body-shape/">apple body shape</a></div></article>
+      <article id="s-rectangle" data-p="34,30,33,35"><svg viewBox="0 0 200 320"></svg><div><h3>Rectangle</h3><p>Bust and hips within 3.6 inches and a waist only slightly smaller – a straight, athletic line.</p><a href="https://bodytypecalcs.com/rectangle-body-shape/">rectangle body shape</a></div></article>
+      <article id="s-inverted" data-p="39,31,33,35"><svg viewBox="0 0 200 320"></svg><div><h3>Inverted Triangle</h3><p>Bust and shoulders at least 3.6 inches larger than the hips, with a moderately defined waist.</p><a href="https://bodytypecalcs.com/inverted-triangle-body-shape/">inverted triangle body shape</a></div></article>
+    </div>
+  </section>
+
+  <!-- ========== PEAR / TRIANGLE / SPOON ========== -->
+  <section class="sec">
+    <p class="kicker">Commonly confused</p>
+    <h2>Pear vs triangle vs spoon – how to tell them apart</h2>
+    <p class="lead">All three have hips wider than the bust, which is why they are mixed up so often. The difference lies in <b>how much</b> wider the hips are and <b>where</b> the width begins.</p>
+    <div class="cmp">
+      <table>
+        <thead><tr><th></th><th>Pear</th><th>Triangle</th><th>Spoon</th></tr></thead>
+        <tbody>
+          <tr><td>Hips vs bust</td><td>3.6–7 in larger</td><td>7 in or more larger</td><td>2 in or more larger</td></tr>
+          <tr><td>Waist</td><td>Defined</td><td>Moderate</td><td>Defined</td></tr>
+          <tr><td>High hip</td><td>Gradual curve</td><td>Gradual curve</td><td>Shelf-like, ≥ 1.193 × waist</td></tr>
+          <tr><td>Where width shows</td><td>Hips and thighs</td><td>Clearly below the waist</td><td>Right under the waist</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ========== MEASURING ========== -->
+  <section class="sec split">
+    <div>
+      <p class="kicker">Get it right</p>
+      <h2>How to measure for an accurate result</h2>
+      <p>A difference of one inch can move you from one shape to the next, so take a minute to measure carefully. Stand in front of a mirror in your underwear or thin, close-fitting clothes, with your feet together and your arms relaxed.</p>
+      <ol class="how">
+        <li><b>Bust:</b> around the fullest part, wearing a non-padded bra.</li>
+        <li><b>Waist:</b> the narrowest point, usually just above the belly button – breathe out first.</li>
+        <li><b>High hip:</b> around the top of the hip bones, about 7 in (18 cm) below the waist.</li>
+        <li><b>Hips:</b> the widest part of the hips and seat, keeping the tape level.</li>
+      </ol>
+    </div>
+    <div class="tip-card">
+      <span>Pro tip</span>
+      <p>Measure twice and use the average. If two readings differ by more than half an inch, check that the tape is level at the back – a slanted tape is the most common cause of a wrong result.</p>
+    </div>
+  </section>
+
+  <!-- ========== CHANGE ========== -->
+  <section class="sec">
+    <p class="kicker">Over time</p>
+    <h2>Can your body type change?</h2>
+    <div class="change">
+      <article><h3>Weight changes</h3><p>Gaining or losing weight changes circumferences, but not always evenly – many women keep the same basic shape at different sizes.</p></article>
+      <article><h3>Pregnancy</h3><p>Hips and bust often change during and after pregnancy. Wait a few months after birth before re-measuring.</p></article>
+      <article><h3>Menopause</h3><p>Hormonal changes can move fat storage towards the waist, which may shift a result towards rectangle or apple.</p></article>
+      <article><h3>Training</h3><p>Upper-body or glute training can add muscle where you train most, gently changing your proportions.</p></article>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="sec">
+    <p class="kicker">FAQ</p>
+    <h2>Female body type questions</h2>
+    <div class="faq">
+      <details open><summary>How many female body types are there?</summary><p>This calculator uses nine female body shapes: hourglass, top hourglass, bottom hourglass, spoon, pear, triangle, apple, rectangle and inverted triangle. Many simpler systems combine them into five main families.</p></details>
+      <details><summary>What is the difference between pear and triangle body shape?</summary><p>Both have hips wider than the bust. In a pear shape the hips are about 3.6 to 7 inches larger with a defined waist; in a triangle shape the difference is 7 inches or more and the waist is less defined.</p></details>
+      <details><summary>Why is my high hip measurement needed?</summary><p>The high hip shows whether your hips widen gradually or form a shelf just below the waist. A high hip of 1.193 times your waist or more points to a spoon shape rather than a bottom hourglass.</p></details>
+      <details><summary>Can I be two body types at once?</summary><p>Measurements often sit close to a border between two shapes. The calculator follows a fixed order and gives the first shape whose rule matches, but if you are near a boundary, the neighbouring shape’s styling tips may suit you too.</p></details>
+      <details><summary>Does body type change after pregnancy or with age?</summary><p>Yes, proportions can shift with pregnancy, menopause, age and changes in weight or fitness. Re-measuring once in a while keeps your result up to date.</p></details>
+      <details><summary>Is my data saved?</summary><p>No. The calculation runs entirely in your browser and your measurements are never sent or stored.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap foot-in">
+    <div>
+      <span class="mark light"><span class="mark-f">F</span><span>body<em>type</em></span></span>
+      <p>A free body type calculator for women – nine shapes, clear explanations, zero data stored.</p>
+    </div>
+    <nav>
+      <a href="#calculator">Calculator</a>
+      <a href="#shapes">Body Shapes</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy</a>
+      <a href="#">Imprint</a>
+    </nav>
+  </div>
+  <p class="wrap foot-copy">© <span id="yr"></span> bodytype · Results describe proportions only – every shape is a good shape.</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var unit='in', copyTxt='';
+
+  var S={
+    hourglass:{n:'Hourglass',f:'Hourglass family',d:'Your bust and hips are almost the same size and your waist is clearly smaller – balanced curves from top to bottom.',t:['Wrap dresses and belted coats','Fitted knits rather than boxy cuts','High-waisted straight or flared trousers']},
+    thourglass:{n:'Top Hourglass',f:'Hourglass family',d:'You have a well-defined waist with a bust a little fuller than your hips.',t:['V-necks and wrap tops','A-line and flared skirts','Belts at the natural waist']},
+    bhourglass:{n:'Bottom Hourglass',f:'Hourglass family',d:'You have a well-defined waist with hips a little fuller than your bust, widening gradually.',t:['Structured or detailed tops','Fit-and-flare dresses','Bootcut or straight jeans']},
+    spoon:{n:'Spoon',f:'Pear family',d:'Your hips are wider than your bust and widen right below the waist, forming a gentle shelf at the high hip.',t:['Peplum tops and belts','Boat or wide necklines','A-line skirts that skim the high hip']},
+    pear:{n:'Pear',f:'Pear family',d:'Your hips are 3.6 to 7 inches wider than your bust, with narrower shoulders and a defined waist.',t:['Colour, prints and detail on top','Dark straight or wide-leg trousers','Jackets that end at the hip bone']},
+    triangle:{n:'Triangle',f:'Pear family',d:'Your hips are 7 inches or more wider than your bust and your body is noticeably fuller below the waist.',t:['Structured shoulders and statement necklines','Simple, dark bottoms in fluid fabrics','A-line skirts and wide-leg trousers']},
+    apple:{n:'Apple',f:'Apple family',d:'Your bust, waist and hips are close in size, with fullness around the middle and often slimmer legs.',t:['Empire waists and flowing tops','Straight or tapered trousers to show your legs','Open jackets and long cardigans']},
+    rectangle:{n:'Rectangle',f:'Rectangle family',d:'Your bust and hips are within 3.6 inches and your waist is only slightly smaller – a straight, athletic line.',t:['Belts, peplums and wrap styles','Ruffles or volume at bust and hem','Layering for shape and depth']},
+    inverted:{n:'Inverted Triangle',f:'Inverted triangle family',d:'Your bust and shoulders are at least 3.6 inches larger than your hips.',t:['Simple V-neck tops','Wide-leg trousers and full skirts','Skip puff sleeves and shoulder pads']}
+  };
+
+  function u(x){ return unit==='cm'?(x*2.54).toFixed(1)+' cm':x.toFixed(1)+' in'; }
+  function sgn(x){ return (x<0?'−':'')+u(Math.abs(x)); }
+
+  function classify(b,w,hh,h){
+    var hb=h-b, bh=b-h, hw=h-w, bw=b-w, r=hh/w;
+    if(bh<=1 && hb<3.6 && (bw>=9 || hw>=10)) return ['hourglass',['Bust and hips are within '+u(Math.abs(hb))+' of each other (less than 1 in / 3.6 in limit).',(bw>=9?'Bust is '+u(bw)+' larger than the waist (9 in or more).':'Hips are '+u(hw)+' larger than the waist (10 in or more).')]];
+    if(hb>=3.6 && hb<10 && hw>=9 && r<1.193) return ['bhourglass',['Hips are '+u(hb)+' larger than the bust (3.6–10 in).','Hips are '+u(hw)+' larger than the waist (9 in or more).','High hip ÷ waist is '+r.toFixed(3)+' (below 1.193, no shelf).']];
+    if(bh>1 && bh<10 && bw>=9) return ['thourglass',['Bust is '+u(bh)+' larger than the hips (1–10 in).','Bust is '+u(bw)+' larger than the waist (9 in or more).']];
+    if(hb>2 && hw>=7 && r>=1.193) return ['spoon',['Hips are '+u(hb)+' larger than the bust (more than 2 in).','High hip ÷ waist is '+r.toFixed(3)+' (1.193 or more = shelf at the high hip).']];
+    if(hb>=3.6 && hw<9) return [hb<7?'pear':'triangle',['Hips are '+u(hb)+' larger than the bust ('+(hb<7?'3.6–7 in = pear':'7 in or more = triangle')+').','Hips are only '+u(hw)+' larger than the waist (under 9 in).']];
+    if(bh>=3.6 && bw<9) return ['inverted',['Bust is '+u(bh)+' larger than the hips (3.6 in or more).','Bust is only '+u(bw)+' larger than the waist (under 9 in).']];
+    if(hw<=1 && bw<=2) return ['apple',['Waist is within '+u(Math.max(hw,0))+' of the hips and '+u(Math.max(bw,0))+' of the bust.','Fullness sits around the middle.']];
+    return ['rectangle',['Bust and hips are within '+u(Math.abs(hb))+' (under 3.6 in).','Waist is not defined enough for an hourglass shape.']];
+  }
+
+  function draw(svg,b,w,hh,h,col){
+    var mx=Math.max(b,w,hh,h), k=68/mx, T=b*k, W=w*k, HH=hh*k, H=h*k, c=100;
+    var d='M'+(c-12)+' 52 Q'+(c-T)+' 58 '+(c-T)+' 80 L'+(c-T*.95)+' 100 Q'+(c-W)+' 125 '+(c-W)+' 150 Q'+(c-HH)+' 165 '+(c-HH)+' 175 Q'+(c-H)+' 192 '+(c-H)+' 205 L'+(c-H*.6)+' 305 L'+(c-6)+' 305 L'+c+' 228'
+      +' L'+(c+6)+' 305 L'+(c+H*.6)+' 305 L'+(c+H)+' 205 Q'+(c+H)+' 192 '+(c+HH)+' 175 Q'+(c+HH)+' 165 '+(c+W)+' 150 Q'+(c+W)+' 125 '+(c+T*.95)+' 100 L'+(c+T)+' 80 Q'+(c+T)+' 58 '+(c+12)+' 52 Z';
+    svg.innerHTML='<circle cx="100" cy="26" r="17" fill="'+col+'"/><rect x="94" y="40" width="12" height="14" rx="4" fill="'+col+'"/><path d="'+d+'" fill="'+col+'"/>';
+  }
+
+  /* gallery silhouettes */
+  document.querySelectorAll('#gallery article').forEach(function(a){
+    var p=a.dataset.p.split(',').map(Number);
+    draw(a.querySelector('svg'),p[0],p[1],p[2],p[3],'#f2c4a8');
+  });
+
+  /* cover figure with measuring lines */
+  (function(){
+    var svg=$('cover-svg');
+    var tmp=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    draw(tmp,36,27,34,39,'#f2c4a8');
+    svg.innerHTML='<g transform="translate(10,-10)">'+tmp.innerHTML+'</g>'
+      +[['Bust',78],['Waist',140],['High hip',165],['Hips',195]].map(function(x,i){
+        return '<line x1="30" y1="'+x[1]+'" x2="190" y2="'+x[1]+'" stroke="#0f5257" stroke-width="1.6" stroke-dasharray="4 4"/><circle cx="190" cy="'+x[1]+'" r="3.5" fill="#0f5257"/><text x="196" y="'+(x[1]+4)+'" font-size="11" font-family="Nunito Sans, sans-serif" font-weight="700" fill="#0f5257">'+(i+1)+'</text>';
+      }).join('');
+  })();
+
+  function run(scroll){
+    var f=unit==='cm'?1/2.54:1;
+    var b=parseFloat($('i-b').value)*f, w=parseFloat($('i-w').value)*f, hh=parseFloat($('i-hh').value)*f, h=parseFloat($('i-h').value)*f;
+    if([b,w,hh,h].some(function(x){return !(x>0);})){ $('err').textContent='Please fill in all four measurements.'; return; }
+    $('err').textContent='';
+    var r=classify(b,w,hh,h), key=r[0], s=S[key];
+    $('r-name').textContent=s.n; $('r-fam').textContent=s.f; $('r-desc').textContent=s.d;
+    $('r-why').innerHTML=r[1].map(function(x){return '<li>'+x+'</li>';}).join('');
+    $('r-tips').innerHTML=s.t.map(function(x){return '<li>'+x+'</li>';}).join('');
+    $('r-more').href='#s-'+key;
+    $('n-hb').textContent=sgn(h-b); $('n-hw').textContent=sgn(h-w); $('n-bw').textContent=sgn(b-w); $('n-hhw').textContent=(hh/w).toFixed(2);
+    draw($('res-svg'),b,w,hh,h,'#f2c4a8');
+    document.querySelectorAll('#gallery article').forEach(function(a){a.classList.toggle('match',a.id==='s-'+key);});
+    copyTxt='My female body type: '+s.n+' ('+s.f+')';
+    if(scroll) $('res').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  document.querySelectorAll('.unit button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      if(btn.dataset.u===unit) return;
+      var f=btn.dataset.u==='cm'?2.54:1/2.54;
+      ['i-b','i-w','i-hh','i-h'].forEach(function(id){ var x=parseFloat($(id).value); if(x>0) $(id).value=Math.round(x*f*10)/10; });
+      unit=btn.dataset.u;
+      document.querySelectorAll('.unit button').forEach(function(x){x.classList.toggle('on',x===btn);});
+      document.querySelectorAll('.m-u').forEach(function(x){x.textContent=unit;});
+      run(false);
+    });
+  });
+  $('go').addEventListener('click',function(){run(true);});
+  ['i-b','i-w','i-hh','i-h'].forEach(function(id){ $(id).addEventListener('keydown',function(e){ if(e.key==='Enter') run(true); }); });
+  $('copy').addEventListener('click',function(){
+    var done=function(){ var e=$('toast'); e.textContent='Result copied'; e.classList.add('show'); setTimeout(function(){e.classList.remove('show');},1800); };
+    if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(copyTxt).then(done); return; }
+    var a=document.createElement('textarea'); a.value=copyTxt; document.body.appendChild(a); a.select(); try{document.execCommand('copy');done();}catch(e){} a.remove();
+  });
+  document.querySelectorAll('.links a').forEach(function(a){a.addEventListener('click',function(){document.querySelector('.links').classList.remove('open');});});
+  $('yr').textContent=new Date().getFullYear();
+  run(false);
+})();
+</script>
+</body>
+</html>
